@@ -1,0 +1,520 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   RetroKino — Light Cream UI
+   Rang: #F1E9D2 asosiy fon + #D9A441 oltin
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+@font-face {
+  font-family: 'VCR OSD Mono';
+  src: url('/fonts/VCR_OSD_Mono.ttf') format('truetype'), local('Courier New');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   CSS O'ZGARUVCHILARI
+   ============================================================ */
+:root {
+  /* Asosiy fonlar */
+  --bg-primary:   #F1E9D2;
+  --bg-secondary: #EAE0C6;
+  --bg-card:      #F7F2E5;
+  --bg-elevated:  #EDE3CC;
+  --bg-overlay:   #E6DAC0;
+  --bg-hover:     #DDD0A5;
+
+  /* Oltin aksent */
+  --gold:         #D9A441;
+  --gold-light:   #F0C56A;
+  --gold-dim:     #A07830;
+  --gold-subtle:  rgba(217, 164, 65, 0.12);
+  --gold-border:  rgba(217, 164, 65, 0.25);
+
+  /* Matnlar */
+  --text-primary:   #764838;
+  --text-secondary: #764838;
+  --text-muted:     #764838;
+  --text-dim:       #96614e;
+
+  /* Chegaralar */
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-light:  rgba(0, 0, 0, 0.12);
+  --border-medium: rgba(0, 0, 0, 0.18);
+
+  /* Qizil (xato, CTA) */
+  --red:      #E8341C;
+  --red-dim:  rgba(232, 52, 28, 0.15);
+
+  /* Shriftlar */
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'VCR OSD Mono', 'Courier New', monospace;
+
+  /* O'tishlar */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  background-color: #F1E9D2;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: #764838; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* ============================================================
+   TIPOGRAFIYA
+   ============================================================ */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; }
+h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 500; }
+h3 { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 500; }
+
+p { color: var(--text-secondary); line-height: 1.7; }
+
+/* ============================================================
+   UTILITY KLASSLARI
+   ============================================================ */
+
+/* Cinzel serif sarlavha */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* Oltin text */
+.text-gold     { color: var(--gold); }
+.text-gold-dim { color: var(--gold-dim); }
+
+/* Gradient matn */
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effektlar */
+.glow-gold {
+  text-shadow: 0 0 20px rgba(217, 164, 65, 0.4), 0 0 40px rgba(217, 164, 65, 0.15);
+}
+.glow-white {
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   TUGMALAR
+   ============================================================ */
+
+/* Asosiy CTA */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--gold);
+  color: #F1E9D2;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+  transition: all 0.2s var(--ease-out);
+  box-shadow: 0 0 0 0 rgba(217,164,65,0);
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(217, 164, 65, 0.3);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Outline tugma */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: rgba(0,0,0,0.06);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s var(--ease-out);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+.btn-outline:hover {
+  background: rgba(0,0,0,0.1);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+/* Ghost tugma */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.07);
+}
+
+/* Orqaga mos tugma (eski kodlar uchun) */
+.btn-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-retro:hover {
+  background: rgba(0,0,0,0.07);
+  border-color: var(--border-medium);
+}
+.btn-retro-filled {
+  background: var(--gold);
+  color: #F1E9D2;
+  border-color: var(--gold);
+  font-weight: 600;
+}
+.btn-retro-filled:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+/* ============================================================
+   BADGE
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+.badge-gold {
+  background: rgba(217,164,65,0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(217,164,65,0.3);
+}
+.badge-red {
+  background: rgba(232,52,28,0.15);
+  color: #FF7060;
+  border: 1px solid rgba(232,52,28,0.3);
+}
+.badge-white {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+/* Eski badge uchun */
+.badge-retro {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.badge-retro:hover,
+.badge-retro.active {
+  background: var(--gold-subtle);
+  color: var(--gold-light);
+  border-color: var(--gold-border);
+}
+
+/* ============================================================
+   INPUT
+   ============================================================ */
+.input-retro {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: 10px 16px;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+.input-retro:focus {
+  border-color: var(--gold-border);
+  box-shadow: 0 0 0 3px rgba(217,164,65,0.12);
+}
+.input-retro::placeholder { color: var(--text-muted); font-size: 0.8rem; }
+
+/* ============================================================
+   KARTA HOVER
+   ============================================================ */
+.card-hover {
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.15), 0 0 0 1px rgba(217,164,65,0.2);
+}
+
+/* ============================================================
+   SHIMMER SKELETON
+   ============================================================ */
+.shimmer {
+  background: linear-gradient(
+    105deg,
+    var(--bg-secondary) 0%,
+    var(--bg-hover) 40%,
+    var(--bg-secondary) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 4px;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================================
+   FILM GRID
+   ============================================================ */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .movie-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
+}
+@media (min-width: 1024px) {
+  .movie-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+}
+@media (min-width: 1280px) {
+  .movie-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+}
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 18px;
+  background: var(--gold);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   GLASSMORPHISM
+   ============================================================ */
+.glass {
+  background: rgba(241, 233, 210, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+.glass-card {
+  background: rgba(241, 233, 210, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(241, 233, 210, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   TV ON ANIMATSIYASI
+   ============================================================ */
+.tv-on {
+  animation: tvOn 0.6s ease-out forwards;
+}
+@keyframes tvOn {
+  0%   { opacity: 0; transform: scaleY(0.01); }
+  40%  { opacity: 0.8; transform: scaleY(1.005); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+.progress-bar {
+  height: 3px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+/* ============================================================
+   ANIMATSIYA UTILLAR
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in     { animation: fadeIn 0.4s ease forwards; }
+.animate-fade-in-up  { animation: fadeInUp 0.5s var(--ease-out) forwards; }
+.animate-scale-in    { animation: scaleIn 0.4s var(--ease-out) forwards; }
+
+/* ============================================================
+   TEXT VHS (eski kod bilan moslik)
+   ============================================================ */
+.text-vhs {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   RESPONSIVE HELPER
+   ============================================================ */
+.max-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 640px)  { .max-container { padding: 0 32px; } }
+@media (min-width: 1024px) { .max-container { padding: 0 48px; } }
+@media (min-width: 1280px) { .max-container { padding: 0 64px; } }
+
+/* Breadcrumb hover */
+.breadcrumb-btn {
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.breadcrumb-btn:hover {
+  background: rgba(217, 164, 65, 0.18) !important;
+  border-color: rgba(217, 164, 65, 0.5) !important;
+  transform: scale(1.05);
+}
