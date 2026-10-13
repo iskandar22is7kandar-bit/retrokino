@@ -19,6 +19,9 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Dynamic sahifa uchun revalidation
+export const revalidate = 60; // 60 soniyada bir marta yangilanadi
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const movie = await getMovieBySlug(slug);

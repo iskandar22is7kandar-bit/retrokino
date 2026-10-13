@@ -5,6 +5,9 @@ import DailyGem from "@/components/home/DailyGem";
 import SectionBlock from "@/components/movie/SectionBlock";
 import MovieCard from "@/components/movie/MovieCard";
 import ContinueWatching from "@/components/home/ContinueWatching";
+
+// Bosh sahifani har daqiqada yangilash
+export const revalidate = 60;
 import {
   getFeaturedMovies,
   getDailyGem,
